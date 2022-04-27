@@ -1,10 +1,10 @@
 import bolt from '@slack/bolt';
 const { App, ExpressReceiver } = bolt;
 import express from 'express';
-import { addActions } from './actions/index.js';
-import { addCommands } from './commands/index.js';
-import { addRoutes } from './routes/index.js';
-import { addViews } from './views/index.js';
+import { addActions } from './src/actions/index.js';
+import { addCommands } from './src/commands/index.js';
+import { addRoutes } from './src/routes/index.js';
+import { addViews } from './src/views/index.js';
 
 import { config } from 'dotenv';
 config();
