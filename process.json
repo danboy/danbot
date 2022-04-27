@@ -1,0 +1,9 @@
+{
+  "name": "danbot",
+  "watch": "./",
+  "env": {
+    "PORT": 3041
+  },
+  "script": "npm",
+  "args": "run server"
+}
