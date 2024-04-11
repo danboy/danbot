@@ -2,6 +2,7 @@ import bolt from '@slack/bolt';
 const { App, ExpressReceiver } = bolt;
 import express from 'express';
 import { addActions } from './src/actions/index.js';
+import { addEvents } from './src/events/index.js';
 import { addCommands } from './src/commands/index.js';
 import { addRoutes } from './src/routes/index.js';
 import { addViews } from './src/views/index.js';
@@ -19,6 +20,7 @@ const app = new App({
   receiver
 });
 
+addEvents(app);
 addCommands(app);
 addRoutes(receiver);
 

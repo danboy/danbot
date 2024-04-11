@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "pm2 start process.json && pm2 logs danbot",
+    "inspect": "npx nodemon --inspect index.js",
     "server": "node index.js",
     "test": "jest"
   },
