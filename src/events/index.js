@@ -1,5 +1,4 @@
 export const addEvents = (app) => {
-console.log("add some events");
   app.event('app_home_opened', async ({ event, client, context }) => {
     try {
       /* view.publish is the method that your app uses to push a view to the Home tab */

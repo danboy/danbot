@@ -1,5 +1,5 @@
 {
-  "name": "danbot",
+  "name": "leapbot",
   "watch": "./",
   "env": {
     "PORT": 3041

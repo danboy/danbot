@@ -6,12 +6,14 @@ import { addEvents } from './src/events/index.js';
 import { addCommands } from './src/commands/index.js';
 import { addRoutes } from './src/routes/index.js';
 import { addViews } from './src/views/index.js';
-
+import { fetchAndSaveAuthToken } from './src/services/index.js';
 import { config } from 'dotenv';
 config();
 
 const receiver = new ExpressReceiver({ signingSecret: process.env.SLACK_SIGNING_SECRET });
 receiver.router.use(express.json());
+
+fetchAndSaveAuthToken({ receiver });
 
 // Initializes your app with your bot token and signing secret
 const app = new App({
@@ -20,9 +22,11 @@ const app = new App({
   receiver
 });
 
+addActions(app);
 addEvents(app);
 addCommands(app);
 addRoutes(receiver);
+addViews(app);
 
 (async () => {
   // Start your app
