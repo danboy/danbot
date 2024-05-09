@@ -8,7 +8,7 @@ export const fetchAuthToken = async () => {
       {
         client_id: process.env.LEAPBOT_AUTH0_CLIENT_ID,
         client_secret: process.env.LEAPBOT_AUTH0_CLIENT_SECRET,
-        audience: process.env.API_URL,
+        audience: process.env.AUTH0_AUDIENCE || process.env.API_URL,
         grant_type: 'client_credentials',
       },
       {
