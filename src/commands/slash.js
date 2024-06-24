@@ -10,7 +10,7 @@ export const slashCommand = async ({  ack, command, say }) => {
     case "stores":
       const {data} = await getOpenStores();
       console.log({data});
-      await say(`getting a list of stores`);
+      await say(`Currently ${data?.length} live stores.`);
       break;
     case "foo":
       await say("bar");

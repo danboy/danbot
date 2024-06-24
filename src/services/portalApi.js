@@ -28,6 +28,6 @@ export const getOpenStores = async () => {
     return response.data;
   } catch (error) {
     console.error('fetchStoreDetails FAILED. Error:', error.message);
-    return [];
+    return error;
   }
 };
