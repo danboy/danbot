@@ -1,7 +1,6 @@
 import { Cache } from './cache.js';
 import axios from 'axios';
 export const fetchAuthToken = async () => {
-  console.log(process.env.LEAPBOT_AUTH0_CLIENT_ID);
   try {
     const result = await axios.post(
       `https://${process.env.AUTH0_DOMAIN}/oauth/token`,

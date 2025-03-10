@@ -31,3 +31,23 @@ export const getOpenStores = async () => {
     return error;
   }
 };
+
+export const getSurveys = async () => {
+
+  const { access_token } = await getAuthTokenFromCache();
+  if (!access_token) return "access token not found";
+  try {
+    const response = await axios.get(`${process.env.API_URL}/retail/surveys?brand_ids=deebf01b8de64634ade9eed812c6d152`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${access_token}`,
+      },
+      retry: 3,
+      retryDelay: 1000,
+    });
+    return response.data;
+  } catch (error) {
+    console.error('fetchStoreDetails FAILED. Error:', error.message);
+    return error;
+  }
+};
