@@ -17,7 +17,7 @@ const toParam = (obj) => {
   return `${key}=${obj[key]}`;
 }
 
-export const getOpenStores = async (query=[{limit: 9999}, {stages: "STORE_CLOSURE"}, {stages: "LIVE"}]) => {
+export const fetchStores = async (query=[{limit: 9999}, {stages: "STORE_CLOSURE"}, {stages: "LIVE"}]) => {
   const params = query.map(param => toParam(param)).join('&')
   const { access_token } = await getAuthTokenFromCache();
   if (!access_token) return "access token not found";

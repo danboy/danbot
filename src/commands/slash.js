@@ -1,4 +1,4 @@
-import { getOpenStores } from "../services/api/index.js";
+import { getStoresFromCache } from "../services/stores/controller.js";
 
 
 const blocks = [
@@ -28,7 +28,7 @@ export const slashCommand = async ({ ack, client, command, say }) => {
   switch (command.text) {
     case "stores":
       console.info('fetching stores')
-      const {data: stores} = await getOpenStores();
+      const stores = await getStoresFromCache();
       if(stores){
         await say(`Currently ${stores?.length} live stores.`);
       }else{
