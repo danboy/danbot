@@ -6,7 +6,7 @@ import { addEvents } from './src/events/index.js';
 import { addCommands } from './src/commands/index.js';
 import { addRoutes } from './src/routes/index.js';
 import { addViews } from './src/views/index.js';
-import { fetchAndSaveAuthToken } from './src/services/index.js';
+import { fetchAndSaveAuthToken, fetchAndSaveStoreSurveys } from './src/services/index.js';
 import { config } from 'dotenv';
 config();
 
@@ -14,6 +14,7 @@ const receiver = new ExpressReceiver({ signingSecret: process.env.SLACK_SIGNING_
 receiver.router.use(express.json());
 
 fetchAndSaveAuthToken({ receiver });
+fetchAndSaveStoreSurveys();
 
 // Initializes your app with your bot token and signing secret
 const app = new App({

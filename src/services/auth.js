@@ -1,4 +1,5 @@
 import { Cache } from './cache.js';
+
 import axios from 'axios';
 export const fetchAuthToken = async () => {
   try {
@@ -27,7 +28,7 @@ export const fetchAuthToken = async () => {
 export const fetchAndSaveAuthToken = async () => {
   try {
     const tokenData = await fetchAuthToken();
-    console.log('fetchAndSaveAuthToken Auth Token is successfully fetched.');
+    console.info('fetchAndSaveAuthToken Auth Token is successfully fetched.');
 
     tokenData.issuedAt = new Date().getTime();
 
@@ -45,18 +46,18 @@ export const fetchAndSaveAuthToken = async () => {
 
 export const cacheAuthToken = async ({ tokenData }) => {
   await Cache.set('authTokenData', tokenData);
-  console.log('saveAuthTokenToCache tokenData saved in app cache.');
+  console.info('saveAuthTokenToCache tokenData saved in app cache.');
 };
 
 export const getAuthTokenFromCache = async () => {
   const tokenData = Cache.get('authTokenData');
 
   if (tokenIsStillActive(tokenData)) {
-    console.log('Auth Token Is Still Active. Returning the token from the cache.');
+    console.info('Auth Token Is Still Active. Returning the token from the cache.');
     return tokenData;
   }
 
-  console.log('Auth Token has expired. Fetching new token.');
+  console.info('Auth Token has expired. Fetching new token.');
   return await fetchAndSaveAuthToken();
 };
 

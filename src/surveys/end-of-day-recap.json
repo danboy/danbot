@@ -1,0 +1,41 @@
+{
+  "response": {
+    "survey_template_id": "09f74d022d97416b832f53a27085e4cc",
+    "store_id": null,
+    "body": {
+      "id": "de4fe73e2a694a92a9885d2f3a264066",
+      "name": "RC EOD Survey",
+      "fields": [
+        {
+          "id": "7af7211358ba4a6fac7e3991e5d69686",
+          "title": "End of Day Recap",
+          "data_type": "STRING",
+          "entry_type": "LONG_TEXT",
+          "description": "Please enter some data",
+          "options": null,
+          "response": null,
+          "required": false,
+          "internal_only": false
+        }
+      ],
+    },
+    "start_time": "Wed, 26 Feb 2025 09:00:00 GMT",
+    "end_time": "Thu, 27 Feb 2025 09:00:00 GMT",
+    "end_editable_time": "Sat, 01 Mar 2025 09:00:00 GMT",
+    "is_editable": true,
+    "id": "d43007c15cd74d898a26e775a5a5e912",
+    "created_at": "Wed, 26 Feb 2025 09:19:47 GMT",
+    "updated_at": "Wed, 26 Feb 2025 09:19:47 GMT",
+    "created_by_id": "b27147585f344f2ab4d00fe234f6440b",
+    "updated_by_id": "b27147585f344f2ab4d00fe234f6440b",
+    "status": "NEW",
+    "name": "RC EOD Survey",
+    "survey_id": "de4fe73e2a694a92a9885d2f3a264066",
+    "store_code": "LRC-003",
+    "brand_name": "Not not Ring Concierge",
+    "period_type": "DAILY",
+    "comments": null,
+    "next_response": null,
+    "prev_response": null
+  }
+}

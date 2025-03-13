@@ -1,4 +1,4 @@
-import { getOpenStores, getSurveys } from "../services/portalApi.js";
+import { getOpenStores } from "../services/api/index.js";
 
 
 const blocks = [
@@ -25,14 +25,10 @@ const blocks = [
 
 export const slashCommand = async ({ ack, client, command, say }) => {
   await ack();
-  console.log({text: command.text});
-  const {data: stores} = await getOpenStores();
   switch (command.text) {
-    case "bar":
-      await say("I think a good dive bar would be nice");
-      break;
     case "stores":
-      console.log({stores});
+      console.info('fetching stores')
+      const {data: stores} = await getOpenStores();
       if(stores){
         await say(`Currently ${stores?.length} live stores.`);
       }else{
@@ -57,12 +53,6 @@ export const slashCommand = async ({ ack, client, command, say }) => {
         text: "none text",
         attachments: [{}],
       })
-      //const {data: surveys} = await getSurveys();
-      //if(surveys){
-      //  await say(`Currently ${surveys?.length} surveys.`);
-      //}else{
-      //  await say(`trouble fetching surveys.`);
-      //}
       break;
     case "foo":
       await say("bar");
