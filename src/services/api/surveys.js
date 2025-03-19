@@ -1,4 +1,5 @@
 import axios from "axios";
+import { formatDateISO } from "../../utils/date.js";
 import { getAuthTokenFromCache } from "../auth.js";
 
 /*
@@ -11,11 +12,13 @@ import { getAuthTokenFromCache } from "../auth.js";
  *
  */
 
-export const fetchStoreSurveys = async function () {
+
+export const fetchStoreSurveys = async function (date) {
+  if(!date) date = formatDateISO(new Date());
   const { access_token } = await getAuthTokenFromCache();
   if (access_token) {
     try {
-      return await axios.get(`${process.env.API_URL}/retail/surveys/leapbot/response`, {
+      return await axios.get(`${process.env.API_URL}/retail/surveys/leapbot/response?survey_date=${date}`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${access_token}`,

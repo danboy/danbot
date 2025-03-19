@@ -46,6 +46,7 @@ export const addEvents = (app) => {
           ]
         }
       });
+  console.log({result})
     }
     catch (error) {
       console.error(error);
