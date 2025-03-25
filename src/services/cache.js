@@ -1,3 +1,9 @@
-import NodeCache from 'node-cache';
+import cache from 'persistent-cache';
 
-export const Cache = new NodeCache({ stdTTL: 900 });
+const PCache = cache({ duration: 1000 * 3600 * 12 });
+
+export const Cache = {
+  ...PCache,
+  set: PCache.putSync,
+  get: PCache.getSync,
+}

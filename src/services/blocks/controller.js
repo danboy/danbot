@@ -13,7 +13,7 @@ export const fetchAndSaveSurveyBlocks = async () => {
     console.info(`Store surveys successfully retrieved.`);
 
     const surveyBlocks = surveyTemplatesToBlocks(cache);
-    console.log({surveyBlocks})
+
     await cacheSurveyBlocks(surveyBlocks);
 
     return surveyBlocks;

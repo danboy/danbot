@@ -21,9 +21,8 @@ export const fetchAndSaveStoreSurveys = async () => {
 
 export const getSurveysFromCache = async () => {
   const storeSurveys = await Cache.get('storeSurveys');
-
   if (storeSurveys) {
-    console.info(`Found ${storeSurveys.data} store surveys. Returning store surveys from the cache.`);
+    console.info(`Found ${Object.keys(storeSurveys).length} store surveys. Returning store surveys from the cache.`);
     return storeSurveys;
   }
 

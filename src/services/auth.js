@@ -1,6 +1,10 @@
 import { Cache } from './cache.js';
 
-import axios from 'axios';
+import Axios from 'axios';
+import {setupCache} from 'axios-cache-interceptor';
+
+// Same object, new types.
+const axios = setupCache(Axios);
 export const fetchAuthToken = async () => {
   try {
     const result = await axios.post(
@@ -18,7 +22,7 @@ export const fetchAuthToken = async () => {
       }
     );
 
-    return result.data;
+    return await result.data;
   } catch (error) {
     console.error('fetchAuthToken error:', error);
     throw error;
@@ -49,27 +53,25 @@ export const cacheAuthToken = async ({ tokenData }) => {
   console.info('saveAuthTokenToCache tokenData saved in app cache.');
 };
 
-export const getAuthTokenFromCache = async () => {
-  const tokenData = Cache.get('authTokenData');
-
-  if (tokenIsStillActive(tokenData)) {
-    console.info('Auth Token Is Still Active. Returning the token from the cache.');
-    return tokenData;
-  }
-
-  console.info('Auth Token has expired. Fetching new token.');
-  return await fetchAndSaveAuthToken();
-};
-
 const tokenIsStillActive = (tokenData) => {
-  try {
     return (
       tokenData &&
       tokenData.access_token &&
       tokenData.expiresAt &&
-      tokenData.expiresAt > moment.now()
+      tokenData.expiresAt > Date.now()
     );
-  } catch {
-    return false;
+};
+
+export const getAuthTokenFromCache = async () => {
+  const tokenData = Cache.get('authTokenData');
+
+  if (tokenData && tokenIsStillActive(tokenData)) {
+    console.info('Auth Token Is Still Active. Returning the token from the cache.');
+    return tokenData;
   }
+    console.log({tokenData})
+
+  console.info('Auth Token has expired. Fetching new token.');
+  console.log(Cache.keysSync(), Cache)
+  //return await fetchAndSaveAuthToken();
 };

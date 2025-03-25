@@ -1,8 +1,8 @@
 import addSurveys from './surveys/index.js';
 
-export const addRoutes = (receiver) => {
+export const addRoutes = (app, receiver) => {
 
-  addSurveys(receiver)
+  addSurveys(app, receiver)
 
   return receiver;
 }
